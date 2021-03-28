@@ -7,6 +7,7 @@ import theme from "../../theme";
 
 const useStyles = makeStyles((theme) => ({
   container: {
+    position: "relative",
     width: "380px",
     height: "500px",
     backgroundColor: theme.palette.beige,
@@ -14,6 +15,12 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: "2px",
     paddingLeft: "24px",
     paddingRight: "24px",
+  },
+  addButton: {
+    position: "absolute",
+    left: "50%",
+    bottom: "-35px",
+    transform: "translateX(-50%)",
   },
 }));
 
@@ -38,7 +45,9 @@ function ToDoList() {
       <Box mt={3}>
         <TaskList tasks={testTasks} />
       </Box>
-      <AddButton />
+      <Box className={classes.addButton}>
+        <AddButton />
+      </Box>
     </Box>
   );
 }

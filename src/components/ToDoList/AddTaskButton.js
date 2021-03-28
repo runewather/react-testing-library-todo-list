@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Dialog, Box, Fab } from "@material-ui/core";
+import { Dialog, Button, Box, TextField, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import AddIcon from "@material-ui/icons/Add";
 import theme from "../../theme";
@@ -15,15 +15,31 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "50%",
     cursor: "pointer",
   },
+  modal: {
+    display: "flex",
+    flexDirection: "column",
+    padding: theme.spacing(4),
+  },
+  buttons: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    marginTop: theme.spacing(2),
+  },
   addIcon: {
     fontSize: "56px",
     color: theme.palette.yellow,
   },
 }));
 
-function AddTaskButton() {
+function AddTaskButton({ addTask = () => {} }) {
   const classes = useStyles(theme);
   const [open, setOpen] = useState(false);
+
+  const handleAddTask = () => {
+    addTask();
+    handleClose();
+  };
 
   const handleOpen = () => {
     setOpen(true);
@@ -39,8 +55,32 @@ function AddTaskButton() {
         onClose={handleClose}
         aria-labelledby="simple-dialog-title"
         data-testid="add-modal"
+        disableBackdropClick={false}
         open={open}
-      ></Dialog>
+      >
+        <Box className={classes.modal}>
+          <Typography variant="h6">Task name:</Typography>
+          <TextField variant="outlined" />
+          <Box className={classes.buttons}>
+            <Button
+              onClick={handleAddTask}
+              data-testid="modal-add-button"
+              variant="outlined"
+            >
+              Add
+            </Button>
+            <Box ml={2}>
+              <Button
+                data-testid="close-button"
+                onClick={handleClose}
+                variant="outlined"
+              >
+                Close
+              </Button>
+            </Box>
+          </Box>
+        </Box>
+      </Dialog>
       <Box
         className={classes.button}
         aria-label="add"
