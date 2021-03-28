@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import Header from "./Header";
@@ -27,26 +28,26 @@ const useStyles = makeStyles((theme) => ({
 function ToDoList() {
   const classes = useStyles(theme);
 
-  const testTasks = [
-    { name: "Learn React", status: "todo" },
-    { name: "Learn React Tests", status: "todo" },
-    { name: "Learn MaterialUI", status: "todo" },
-    { name: "Learn React", status: "todo" },
-    { name: "Learn React Tests", status: "todo" },
-    { name: "Learn MaterialUI", status: "todo" },
-    { name: "Learn React", status: "todo" },
-    { name: "Learn React Tests", status: "todo" },
-    { name: "Learn MaterialUI", status: "todo" },
-  ];
+  const [tasks, setTasks] = useState([]);
+
+  const addTask = (task) => {
+    setTasks([...tasks, { name: task, status: "todo" }]);
+  };
+
+  const updateTask = (id, taskName) => {
+    const arr = tasks;
+    arr[id] = { name: taskName, status: arr[id].status };
+    setTasks([...arr]);
+  };
 
   return (
     <Box className={classes.container}>
       <Header />
       <Box mt={3}>
-        <TaskList tasks={testTasks} />
+        <TaskList tasks={tasks} updateTask={updateTask} />
       </Box>
       <Box className={classes.addButton}>
-        <AddButton />
+        <AddButton addTask={addTask} />
       </Box>
     </Box>
   );

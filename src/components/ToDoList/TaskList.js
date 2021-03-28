@@ -69,7 +69,7 @@ function TaskList({
                 className={classes.edit}
                 onClick={() => {
                   setTaskEdit({});
-                  updateTask();
+                  updateTask(index, taskEdit.text);
                 }}
                 data-testid="done-button"
               >

@@ -35,9 +35,11 @@ const useStyles = makeStyles((theme) => ({
 function AddTaskButton({ addTask = () => {} }) {
   const classes = useStyles(theme);
   const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
 
   const handleAddTask = () => {
-    addTask();
+    addTask(value);
+    setValue("");
     handleClose();
   };
 
@@ -60,7 +62,12 @@ function AddTaskButton({ addTask = () => {} }) {
       >
         <Box className={classes.modal}>
           <Typography variant="h6">Task name:</Typography>
-          <TextField variant="outlined" />
+          <TextField
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            data-testid="modal-input"
+            variant="outlined"
+          />
           <Box className={classes.buttons}>
             <Button
               onClick={handleAddTask}
