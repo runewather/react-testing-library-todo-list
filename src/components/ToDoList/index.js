@@ -2,6 +2,7 @@ import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import Header from "./Header";
 import TaskList from "./TaskList";
+import AddButton from "./AddTaskButton";
 import theme from "../../theme";
 
 const useStyles = makeStyles((theme) => ({
@@ -37,6 +38,7 @@ function ToDoList() {
       <Box mt={3}>
         <TaskList tasks={testTasks} />
       </Box>
+      <AddButton />
     </Box>
   );
 }
