@@ -6,7 +6,7 @@ import theme from "../../theme";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    width: "350px",
+    width: "380px",
     height: "500px",
     backgroundColor: theme.palette.beige,
     paddingTop: "24px",
@@ -19,7 +19,17 @@ const useStyles = makeStyles((theme) => ({
 function ToDoList() {
   const classes = useStyles(theme);
 
-  const testTasks = ["Learn React", "Learn React Tests", "Learn MaterialUI"];
+  const testTasks = [
+    { name: "Learn React", status: "todo" },
+    { name: "Learn React Tests", status: "todo" },
+    { name: "Learn MaterialUI", status: "todo" },
+    { name: "Learn React", status: "todo" },
+    { name: "Learn React Tests", status: "todo" },
+    { name: "Learn MaterialUI", status: "todo" },
+    { name: "Learn React", status: "todo" },
+    { name: "Learn React Tests", status: "todo" },
+    { name: "Learn MaterialUI", status: "todo" },
+  ];
 
   return (
     <Box className={classes.container}>

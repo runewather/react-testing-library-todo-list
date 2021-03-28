@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, cleanup } from "@testing-library/react";
 import dayjs from "dayjs";
 
 import weekday from "dayjs/plugin/weekday";
@@ -13,6 +13,10 @@ dayjs.extend(weekday);
 dayjs.locale(locale);
 
 import ToDoList from "./Header";
+
+afterEach(async () => {
+  await cleanup();
+});
 
 test("Should show date now", async () => {
   render(<ToDoList />);
