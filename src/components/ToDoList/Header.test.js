@@ -12,7 +12,7 @@ dayjs.extend(customParseFormat);
 dayjs.extend(weekday);
 dayjs.locale(locale);
 
-import ToDoList from "./ToDoListHeader";
+import ToDoList from "./Header";
 
 test("Should show date now", async () => {
   render(<ToDoList />);

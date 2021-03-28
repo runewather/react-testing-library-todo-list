@@ -1,6 +1,7 @@
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
-import ToDoListHeader from "./ToDoListHeader";
+import Header from "./Header";
+import TaskList from "./TaskList";
 import theme from "../../theme";
 
 const useStyles = makeStyles((theme) => ({
@@ -9,18 +10,23 @@ const useStyles = makeStyles((theme) => ({
     height: "500px",
     backgroundColor: theme.palette.beige,
     paddingTop: "24px",
-    paddingBottom: "24px",
-    paddingLeft: "40px",
-    paddingRight: "40px",
+    paddingBottom: "2px",
+    paddingLeft: "24px",
+    paddingRight: "24px",
   },
 }));
 
 function ToDoList() {
   const classes = useStyles(theme);
 
+  const testTasks = ["Learn React", "Learn React Tests", "Learn MaterialUI"];
+
   return (
     <Box className={classes.container}>
-      <ToDoListHeader />
+      <Header />
+      <Box mt={3}>
+        <TaskList tasks={testTasks} />
+      </Box>
     </Box>
   );
 }
