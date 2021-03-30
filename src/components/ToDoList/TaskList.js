@@ -1,4 +1,5 @@
 import Box from "@material-ui/core/Box";
+import DeleteIcon from "@material-ui/icons/Delete";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import DoneIcon from "@material-ui/icons/Done";
 import TextField from "@material-ui/core/TextField";
@@ -35,12 +36,17 @@ const useStyles = makeStyles((theme) => ({
     borderColor: theme.palette.red,
     border: "3px solid",
   },
+  iconContainers: {
+    display: "flex",
+    flexDirection: "row",
+  },
 }));
 
 function TaskList({
   tasks = [],
   finishTask = () => {},
   updateTask = () => {},
+  deleteTask = () => {},
 }) {
   const classes = useStyles(theme);
   const [taskEdit, setTaskEdit] = useState({});
@@ -79,14 +85,26 @@ function TaskList({
           ) : (
             <>
               <Box>{t.name}</Box>
-              <Box
-                className={classes.edit}
-                onClick={() => {
-                  setTaskEdit({ id: index, text: t.name });
-                }}
-                data-testid="edit-button"
-              >
-                <EditOutlinedIcon />
+              <Box className={classes.iconContainers}>
+                <Box
+                  className={classes.edit}
+                  onClick={() => {
+                    deleteTask(index);
+                  }}
+                  data-testid="delete-button"
+                >
+                  <DeleteIcon />
+                </Box>
+                <Box
+                  ml={1}
+                  className={classes.edit}
+                  onClick={() => {
+                    setTaskEdit({ id: index, text: t.name });
+                  }}
+                  data-testid="edit-button"
+                >
+                  <EditOutlinedIcon />
+                </Box>
               </Box>
             </>
           )}

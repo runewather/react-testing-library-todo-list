@@ -40,11 +40,27 @@ function ToDoList() {
     setTasks([...arr]);
   };
 
+  const deleteTask = (id) => {
+    const arr = tasks.splice(id, id);
+    setTasks([...arr]);
+  };
+
+  const finishTask = (id) => {
+    const arr = tasks;
+    arr[id] = { name: arr[id].name, status: "done" };
+    setTasks([...arr]);
+  };
+
   return (
     <Box className={classes.container}>
       <Header />
       <Box mt={3}>
-        <TaskList tasks={tasks} updateTask={updateTask} />
+        <TaskList
+          tasks={tasks}
+          updateTask={updateTask}
+          deleteTask={deleteTask}
+          finishTask={finishTask}
+        />
       </Box>
       <Box className={classes.addButton}>
         <AddButton addTask={addTask} />

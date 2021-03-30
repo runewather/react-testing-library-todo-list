@@ -5,9 +5,7 @@ afterEach(async () => {
   await cleanup();
 });
 
-test("Should add a task to task list component", async () => {
-  render(<ToDoList />);
-
+const addTask = () => {
   const addButton = screen.getByTestId("add-button");
 
   fireEvent.click(addButton);
@@ -21,6 +19,12 @@ test("Should add a task to task list component", async () => {
   const modalAddButton = screen.getByTestId("modal-add-button");
 
   fireEvent.click(modalAddButton);
+};
+
+test("Should add a task to task list component", async () => {
+  render(<ToDoList />);
+
+  addTask();
 
   const task = screen.getByText("Task Test");
 
@@ -30,19 +34,7 @@ test("Should add a task to task list component", async () => {
 test("Should update in task list component", async () => {
   render(<ToDoList />);
 
-  const addButton = screen.getByTestId("add-button");
-
-  fireEvent.click(addButton);
-
-  const modalInput = screen
-    .getByTestId("modal-input")
-    .getElementsByTagName("input")[0];
-
-  fireEvent.change(modalInput, { target: { value: "Task Test" } });
-
-  const modalAddButton = screen.getByTestId("modal-add-button");
-
-  fireEvent.click(modalAddButton);
+  addTask();
 
   const task = screen.getByTestId("task-item");
 
@@ -61,4 +53,30 @@ test("Should update in task list component", async () => {
   const taskUpdated = screen.getByText("Task Test Update");
 
   expect(taskUpdated).toBeInTheDocument();
+});
+
+test("Should delete in task list component", () => {
+  render(<ToDoList />);
+
+  addTask();
+
+  const task = screen.getByText("Task Test");
+
+  const deleteButton = screen.getByTestId("delete-button");
+
+  fireEvent.click(deleteButton);
+
+  expect(task).not.toBeInTheDocument();
+});
+
+test("Should finish task in list component", () => {
+  render(<ToDoList />);
+
+  addTask();
+
+  const task = screen.getByText("Task Test");
+
+  fireEvent.click(task);
+
+  expect(task.style.textDecoration).toBe("line-through");
 });
