@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "space-between",
     marginBottom: theme.spacing(3),
+    cursor: "pointer",
   },
   edit: {
     display: "flex",
@@ -54,12 +55,7 @@ function TaskList({
   return (
     <Box className={classes.container}>
       {tasks.map((t, index) => (
-        <Box
-          className={classes.task}
-          key={index}
-          onClick={finishTask}
-          data-testid="task-item"
-        >
+        <Box className={classes.task} key={index} data-testid="task-item">
           {taskEdit.id === index ? (
             <>
               <TextField
@@ -84,7 +80,17 @@ function TaskList({
             </>
           ) : (
             <>
-              <Box>{t.name}</Box>
+              <Box
+                data-testid="task-name"
+                onClick={() => {
+                  finishTask(index);
+                }}
+                style={{
+                  textDecoration: t.status === "todo" ? "none" : "line-through",
+                }}
+              >
+                {t.name}
+              </Box>
               <Box className={classes.iconContainers}>
                 <Box
                   className={classes.edit}

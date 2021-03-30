@@ -40,7 +40,7 @@ test("Should execute finish task function on click in the task name", () => {
 
   render(<TaskList tasks={testTasks} finishTask={mockFunction} />);
 
-  const task = screen.getAllByTestId("task-item");
+  const task = screen.getAllByTestId("task-name");
 
   task.map((t) => {
     fireEvent.click(t);

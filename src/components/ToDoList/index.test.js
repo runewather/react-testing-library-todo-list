@@ -74,7 +74,7 @@ test("Should finish task in list component", () => {
 
   addTask();
 
-  const task = screen.getByText("Task Test");
+  const task = screen.getByTestId("task-name");
 
   fireEvent.click(task);
 
