@@ -55,7 +55,11 @@ function TaskList({
   return (
     <Box className={classes.container}>
       {tasks.map((t, index) => (
-        <Box className={classes.task} key={index} data-testid="task-item">
+        <Box
+          className={classes.task}
+          key={`${JSON.stringify(t)}${index}`}
+          data-testid="task-item"
+        >
           {taskEdit.id === index ? (
             <>
               <TextField
