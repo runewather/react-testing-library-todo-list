@@ -31,12 +31,12 @@ function ToDoList() {
   const [tasks, setTasks] = useState([]);
 
   const addTask = (task) => {
-    setTasks([...tasks, { name: task, status: "todo" }]);
+    setTasks([...tasks, { name: task, done: false }]);
   };
 
   const updateTask = (id, taskName) => {
     const arr = tasks;
-    arr[id] = { name: taskName, status: arr[id].status };
+    arr[id] = { name: taskName, done: arr[id].done };
     setTasks([...arr]);
   };
 
@@ -45,9 +45,9 @@ function ToDoList() {
     setTasks([...arr]);
   };
 
-  const finishTask = (id) => {
+  const toggleTask = (id) => {
     const arr = tasks;
-    arr[id] = { name: arr[id].name, status: "done" };
+    arr[id] = { name: arr[id].name, done: !arr[id].done };
     setTasks([...arr]);
   };
 
@@ -59,7 +59,7 @@ function ToDoList() {
           tasks={tasks}
           updateTask={updateTask}
           deleteTask={deleteTask}
-          finishTask={finishTask}
+          toggleTask={toggleTask}
         />
       </Box>
       <Box className={classes.addButton}>

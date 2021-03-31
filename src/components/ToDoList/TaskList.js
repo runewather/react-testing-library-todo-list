@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 
 function TaskList({
   tasks = [],
-  finishTask = () => {},
+  toggleTask = () => {},
   updateTask = () => {},
   deleteTask = () => {},
 }) {
@@ -83,10 +83,11 @@ function TaskList({
               <Box
                 data-testid="task-name"
                 onClick={() => {
-                  finishTask(index);
+                  toggleTask(index);
                 }}
                 style={{
-                  textDecoration: t.status === "todo" ? "none" : "line-through",
+                  textDecoration: t.done ? "line-through" : "none",
+                  userSelect: "none",
                 }}
               >
                 {t.name}
@@ -97,7 +98,7 @@ function TaskList({
                   onClick={() => {
                     deleteTask(index);
                   }}
-                  data-testid="delete-button"
+                  data-testid={`${t.name}-delete-btn`}
                 >
                   <DeleteIcon />
                 </Box>

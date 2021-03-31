@@ -2,9 +2,9 @@ import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import TaskList from "./TaskList";
 
 const testTasks = [
-  { name: "Learn React", status: "todo" },
-  { name: "Learn React Tests", status: "todo" },
-  { name: "Learn MaterialUI", status: "todo" },
+  { name: "Learn React", status: false },
+  { name: "Learn React Tests", status: false },
+  { name: "Learn MaterialUI", status: false },
 ];
 
 afterEach(async () => {
@@ -35,10 +35,10 @@ test("Should display a TextField component when click edit icon", () => {
   expect(editedTaskNames).toEqual(testTasks.map((t) => t.name));
 });
 
-test("Should execute finish task function on click in the task name", () => {
+test("Should execute toggle task function on click in the task name", () => {
   const mockFunction = jest.fn();
 
-  render(<TaskList tasks={testTasks} finishTask={mockFunction} />);
+  render(<TaskList tasks={testTasks} toggleTask={mockFunction} />);
 
   const task = screen.getAllByTestId("task-name");
 
