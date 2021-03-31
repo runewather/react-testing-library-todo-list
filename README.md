@@ -1,5 +1,5 @@
 # React Testing Library TO DO List
-<img src="https://github.com/MichaelCurrin/node-project-template/workflows/Node%20CI/badge.svg" />
+<img src="https://github.com/runewather/react-testing-library-todo-list/workflows/Node%20CI/badge.svg" />
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
