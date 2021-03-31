@@ -22,9 +22,9 @@ test("Should display a task when receive props", async () => {
 test("Should display a hint message when task list is empty", async () => {
   render(<TaskList tasks={[]} />);
 
-  expect(screen.getByText(t.name).innerHTML).toEqual(
-    "Click the button below to add a new task"
-  );
+  expect(
+    screen.getByText("Click the button below to add a new task")
+  ).toBeInTheDocument();
 });
 
 test("Should display a TextField component when click edit icon", () => {

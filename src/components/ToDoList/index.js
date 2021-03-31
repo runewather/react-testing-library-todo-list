@@ -41,7 +41,8 @@ function ToDoList() {
   };
 
   const deleteTask = (id) => {
-    const arr = tasks.splice(id, id);
+    const arr = tasks;
+    arr.splice(id, 1);
     setTasks([...arr]);
   };
 
