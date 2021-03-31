@@ -25,4 +25,4 @@ https://inspiring-montalcini-079d52.netlify.app/
 
 | Toggle Task  | Remove Task |
 | ------------- | ------------- |
-| <img src="https://user-images.githubusercontent.com/6431486/113085735-c3cd0200-91b6-11eb-903a-2132d544470f.gif" width="382" height="551" />  | <img src="https://user-images.githubusercontent.com/6431486/113085741-c596c580-91b6-11eb-89c9-51e6dbb0c035.gif" width="382" height="551" />  |
+| <img src="https://user-images.githubusercontent.com/6431486/113085735-c3cd0200-91b6-11eb-903a-2132d544470f.gif" width="382" height="551" />  | <img src="https://user-images.githubusercontent.com/6431486/113087892-ebbe6480-91ba-11eb-840f-878d7bb6d4fd.gif" width="382" height="551" />  |
