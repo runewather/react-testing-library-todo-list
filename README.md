@@ -6,7 +6,7 @@ This is a simple project made to mainly to study the [React Testing Library](htt
 
 ### Live test
 
-https://inspiring-montalcini-079d52.netlify.app/
+https://todoreacttestinglib.netlify.app/
 
 ### How to run locally
 
