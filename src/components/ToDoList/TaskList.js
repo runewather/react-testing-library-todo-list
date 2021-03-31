@@ -1,4 +1,5 @@
 import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import DoneIcon from "@material-ui/icons/Done";
@@ -54,73 +55,79 @@ function TaskList({
 
   return (
     <Box className={classes.container}>
-      {tasks.map((t, index) => (
-        <Box
-          className={classes.task}
-          key={`${JSON.stringify(t)}${index}`}
-          data-testid="task-item"
-        >
-          {taskEdit.id === index ? (
-            <>
-              <TextField
-                value={taskEdit.text}
-                onChange={(e) => {
-                  setTaskEdit({ ...taskEdit, text: e.target.value });
-                }}
-                data-testid="edit-input"
-                id="outlined-basic"
-                variant="outlined"
-              />
-              <Box
-                className={classes.edit}
-                onClick={() => {
-                  setTaskEdit({});
-                  updateTask(index, taskEdit.text);
-                }}
-                data-testid="done-button"
-              >
-                <DoneIcon />
-              </Box>
-            </>
-          ) : (
-            <>
-              <Box
-                data-testid="task-name"
-                onClick={() => {
-                  toggleTask(index);
-                }}
-                style={{
-                  textDecoration: t.done ? "line-through" : "none",
-                  userSelect: "none",
-                }}
-              >
-                {t.name}
-              </Box>
-              <Box className={classes.iconContainers}>
+      {tasks.length === 0 && (
+        <Typography variant="h6" style={{ textAlign: "center" }}>
+          Click the button below to add a new task
+        </Typography>
+      )}
+      {tasks.length > 0 &&
+        tasks.map((t, index) => (
+          <Box
+            className={classes.task}
+            key={`${JSON.stringify(t)}${index}`}
+            data-testid="task-item"
+          >
+            {taskEdit.id === index ? (
+              <>
+                <TextField
+                  value={taskEdit.text}
+                  onChange={(e) => {
+                    setTaskEdit({ ...taskEdit, text: e.target.value });
+                  }}
+                  data-testid="edit-input"
+                  id="outlined-basic"
+                  variant="outlined"
+                />
                 <Box
                   className={classes.edit}
                   onClick={() => {
-                    deleteTask(index);
+                    setTaskEdit({});
+                    updateTask(index, taskEdit.text);
                   }}
-                  data-testid={`${t.name}-delete-btn`}
+                  data-testid="done-button"
                 >
-                  <DeleteIcon />
+                  <DoneIcon />
                 </Box>
+              </>
+            ) : (
+              <>
                 <Box
-                  ml={1}
-                  className={classes.edit}
+                  data-testid="task-name"
                   onClick={() => {
-                    setTaskEdit({ id: index, text: t.name });
+                    toggleTask(index);
                   }}
-                  data-testid="edit-button"
+                  style={{
+                    textDecoration: t.done ? "line-through" : "none",
+                    userSelect: "none",
+                  }}
                 >
-                  <EditOutlinedIcon />
+                  {t.name}
                 </Box>
-              </Box>
-            </>
-          )}
-        </Box>
-      ))}
+                <Box className={classes.iconContainers}>
+                  <Box
+                    className={classes.edit}
+                    onClick={() => {
+                      deleteTask(index);
+                    }}
+                    data-testid={`${t.name}-delete-btn`}
+                  >
+                    <DeleteIcon />
+                  </Box>
+                  <Box
+                    ml={1}
+                    className={classes.edit}
+                    onClick={() => {
+                      setTaskEdit({ id: index, text: t.name });
+                    }}
+                    data-testid="edit-button"
+                  >
+                    <EditOutlinedIcon />
+                  </Box>
+                </Box>
+              </>
+            )}
+          </Box>
+        ))}
     </Box>
   );
 }
