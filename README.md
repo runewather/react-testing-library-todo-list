@@ -16,3 +16,13 @@ https://inspiring-montalcini-079d52.netlify.app/
 ### Run test
 
     npm run test
+
+### Project features
+
+| Add Task  | Edit Task |
+| ------------- | ------------- |
+| <img src="https://user-images.githubusercontent.com/6431486/113085708-b4e64f80-91b6-11eb-90ff-879e0d077f34.gif" width="382" height="551" />  | <img src="https://user-images.githubusercontent.com/6431486/113085730-bf084e00-91b6-11eb-8ef8-4412bcaf783b.gif" width="382" height="551" />  |
+
+| Toggle Task  | Remove Task |
+| ------------- | ------------- |
+| <img src="https://user-images.githubusercontent.com/6431486/113085735-c3cd0200-91b6-11eb-903a-2132d544470f.gif" width="382" height="551" />  | <img src="https://user-images.githubusercontent.com/6431486/113085741-c596c580-91b6-11eb-89c9-51e6dbb0c035.gif" width="382" height="551" />  |
